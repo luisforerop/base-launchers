@@ -1,17 +1,23 @@
-import AuthButtonServer from '@/components/auth-button-server'
+import { UserCard } from '@/components/user-card'
 import { tables } from '@/utils/supabase/db-constants'
 import { createServerClient } from '@/utils/supabase/server'
+import { User } from '../models'
 
 export default async function Home() {
   const supabase = createServerClient()
-  const { data } = await supabase
+  const fullData = await supabase
     .from(tables.users)
     .select(`*, ${tables.socialMedia}(*)`)
 
+  const users = fullData.data as unknown as User[]
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <AuthButtonServer />
-      {JSON.stringify(data)}
-    </main>
+    <div className="flex flex-col items-center justify-between ">
+      <div className="flex flex-col gap-4">
+        {users.map((user) => (
+          <UserCard {...user} key={user.id} />
+        ))}
+      </div>
+    </div>
   )
 }
