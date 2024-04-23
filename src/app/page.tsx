@@ -1,13 +1,11 @@
 import { UserCard } from '@/components/user-card'
-import { tables } from '@/utils/supabase/db-constants'
+import { QUERIES, TABLES } from '@/utils/supabase/db-constants'
 import { createServerClient } from '@/utils/supabase/server'
 import { User } from '../models'
 
 export default async function Home() {
   const supabase = createServerClient()
-  const fullData = await supabase
-    .from(tables.users)
-    .select(`*, ${tables.socialMedia}(*)`)
+  const fullData = await supabase.from(TABLES.USERS).select(QUERIES.USERS)
 
   const users = fullData.data as unknown as User[]
 

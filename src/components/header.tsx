@@ -1,5 +1,5 @@
 import React from 'react'
-import AuthButtonServer from './auth-button-server'
+import { AuthButtonServer } from './auth-button'
 import { ImportantLinks } from './important-links'
 import { BaseLaunchersIcon } from './base-launchers-icon'
 

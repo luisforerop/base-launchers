@@ -4,6 +4,8 @@ export interface User {
   name: string
   avatar_url: string
   social_media: Socialmedia[]
+  description?: string
+  website?: string
 }
 
 export interface Socialmedia {

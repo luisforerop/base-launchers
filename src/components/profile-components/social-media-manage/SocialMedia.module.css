@@ -1,0 +1,7 @@
+.modalSubContainer {
+  width: 500px !important;
+  height: fit-content !important;
+  min-height: auto !important;
+  max-width: 700px;
+  overflow: auto;
+}

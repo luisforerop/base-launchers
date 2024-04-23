@@ -27,6 +27,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <div id="edit-social-media" />
       </body>
     </html>
   )
