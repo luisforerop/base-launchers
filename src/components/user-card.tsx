@@ -3,14 +3,27 @@ import React, { FC } from 'react'
 import { SocialMedia } from './social-media'
 import Link from 'next/link'
 
-export const UserCard: FC<User> = ({ avatar_url, id, name, social_media }) => {
+export const UserCard: FC<User> = ({
+  avatar_url,
+  id,
+  name,
+  social_media,
+  username,
+  description,
+}) => {
   return (
-    <div className="flex gap-2" key={id}>
-      <img className="h-[60px] w-[60px]" src={avatar_url} alt={name} />
-      <div className="flex flex-col justify-center gap-1">
-        <Link href={`/user/${id}`}>{name}</Link>
-        <SocialMedia socialMedia={social_media} />
+    <section className="w-full flex flex-col gap-2">
+      <div className="flex gap-2" key={id}>
+        <img className="h-[80px] w-[80px]" src={avatar_url} alt={name} />
+        <div className="flex flex-col justify-start gap-1">
+          <Link className="text-lg" href={`/user/${id}`}>
+            {username ?? name}
+          </Link>
+          {username && <span className="text-sm text-gray-700">{name}</span>}
+          <SocialMedia socialMedia={social_media} />
+        </div>
       </div>
-    </div>
+      {description && <p>{description}</p>}
+    </section>
   )
 }

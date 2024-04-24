@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col items-center justify-between max-w-[800px] m-auto">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-6">
         {users.map((user) => (
           <UserCard {...user} key={user.id} />
         ))}

@@ -14,13 +14,17 @@ export const SocialMediaManage = () => {
   return (
     <>
       <SocialMediaModal open={open} setOpen={setOpen} />
-      <div className="flex">
-        {social_media.map((platform) => (
-          <SocialMediaTag {...platform} key={platform.id} />
-        ))}
-        <button onClick={() => setOpen(true)}>
-          <IconPencil />
-        </button>
+
+      <div className="w-full mb-4">
+        <h2 className="text-xl mb-2">Tus redes sociales</h2>
+        <div className="flex w-full mb-4 items-center gap-2">
+          {social_media.map((platform) => (
+            <SocialMediaTag {...platform} key={platform.id} />
+          ))}
+          <button className="flex  items-center" onClick={() => setOpen(true)}>
+            <IconPencil /> Editar
+          </button>
+        </div>
       </div>
     </>
   )

@@ -3,9 +3,10 @@ import { UpdateForm, UpdateFormProps } from './update-form'
 
 interface ProfileDataProps extends UpdateFormProps {
   placeholder?: string
+  description?: string
 }
 
-export const ProfileData: FC<ProfileDataProps> = ({
+const ProfileDataContent: FC<ProfileDataProps> = ({
   placeholder,
   ...updatedProps
 }) => {
@@ -34,5 +35,19 @@ export const ProfileData: FC<ProfileDataProps> = ({
     >
       {updatedProps.initialValue}
     </button>
+  )
+}
+
+export const ProfileData: FC<ProfileDataProps> = ({
+  description,
+  ...props
+}) => {
+  return (
+    <div className="flex flex-col">
+      <ProfileDataContent {...props} />
+      {description && (
+        <span className="text-sm ml-2 text-gray-600">{description}</span>
+      )}
+    </div>
   )
 }

@@ -1,5 +1,3 @@
-// TODO: si detectamos que no hay data del username, hacemos que se vaya al profile para que lo agregue
-
 import { SocialMedia } from '@/components/social-media'
 import { User } from '@/models'
 import { QUERIES, TABLES } from '@/utils/supabase/db-constants'
@@ -20,8 +18,8 @@ export default async function Page({
 
   if (!fullData.data) return null
 
-  const { avatar_url, name, social_media, description, website } = fullData
-    .data[0] as unknown as User
+  const { avatar_url, name, social_media, description, website, username } =
+    fullData.data[0] as unknown as User
 
   const parsedWebsite = website?.includes('http')
     ? website
@@ -29,25 +27,31 @@ export default async function Page({
 
   return (
     <div className="flex flex-col items-center justify-between w-[800px] mx-auto">
-      <div className="flex gap-4 align-center mb-5 w-full">
-        <img src={avatar_url} alt={name} />
-        <div className="flex flex-col gap-2">
-          <h1 className="text-3xl">{name}</h1>
-          {website && (
-            <a
-              className="flex items-center gap-2"
-              href={parsedWebsite}
-              target="_blank"
-            >
-              <IconLink /> {website}
-            </a>
-          )}
-          <SocialMedia socialMedia={social_media} />
+      <div className="flex flex-col gap-4 align-center mb-5 w-full">
+        <div className="flex gap-4">
+          <img
+            className="w-[120px] h-[120px] rounded"
+            src={avatar_url}
+            alt={name}
+          />
+          <div className="flex flex-col gap-1 justify-center">
+            <h1 className="text-3xl">{username ?? name}</h1>
+            {username && <h2 className="text-lg font-semibold">{name}</h2>}
+            <SocialMedia socialMedia={social_media} />
+          </div>
         </div>
+        {website && (
+          <a
+            className="flex items-center gap-2"
+            href={parsedWebsite}
+            target="_blank"
+          >
+            <IconLink /> {website}
+          </a>
+        )}
+        {description && <p className="w-full text-start mb-3">{description}</p>}
       </div>
-      {description && (
-        <p className="w-full text-start py-1 px-2">{description}</p>
-      )}
+
       <h2 className="text-xl mt-5 flex gap-2 items-center">
         Próximos lanzamientos <IconJetpack />
       </h2>
