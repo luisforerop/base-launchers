@@ -6,6 +6,7 @@ export interface User {
   social_media: Socialmedia[]
   description?: string
   website?: string
+  username?: string
 }
 
 export interface Socialmedia {
