@@ -2,7 +2,6 @@
 import { Socialmedia, User } from '@/models'
 import { createBrowserClient } from '@/utils/supabase/client'
 import { QUERIES, TABLES } from '@/utils/supabase/db-constants'
-import { revalidatePath } from 'next/cache'
 import type { FC, PropsWithChildren } from 'react'
 import { createContext, useContext, useState } from 'react'
 
