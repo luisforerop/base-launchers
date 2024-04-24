@@ -40,8 +40,6 @@ const UpdateSocialMediaUnit: FC<UpdateSocialMediaUnitProps> = ({
         { social_media: selectedSocialMedia, username },
         id
       )
-      console.log('termine')
-
       onClose()
     }
   }
@@ -58,6 +56,7 @@ const UpdateSocialMediaUnit: FC<UpdateSocialMediaUnitProps> = ({
             <option
               value={socialMedia}
               selected={socialMedia === selectedSocialMedia}
+              key={socialMedia}
             >
               {socialMedia}
             </option>

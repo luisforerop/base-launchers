@@ -12,7 +12,6 @@ export default async function Page({
   params: { user_id: string }
 }) {
   const supabase = createServerClient()
-  console.log({ user_id })
 
   const fullData = await supabase
     .from(TABLES.USERS)

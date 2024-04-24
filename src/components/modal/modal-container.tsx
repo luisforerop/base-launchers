@@ -19,8 +19,6 @@ export const ModalContainer: FC<PropsWithChildren<ModalProps>> = ({
     customClases
   )
 
-  console.log({ customClases })
-
   const escapeListener = (e: KeyboardEvent) => {
     if (e.key === 'Escape') setIsOpen(false)
   }
