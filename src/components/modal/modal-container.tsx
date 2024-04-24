@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect } from 'react'
 import { ModalProps } from '.'
-import styles from './Modal.module.css'
+import styles from './modal.module.css'
 import { useGetClasses } from '@/hooks'
 export type CustomClasses = {
   modalContainer?: string
