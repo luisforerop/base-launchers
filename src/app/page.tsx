@@ -10,7 +10,7 @@ export default async function Home() {
   const users = fullData.data as unknown as User[]
 
   return (
-    <div className="flex flex-col items-center justify-between ">
+    <div className="flex flex-col items-center justify-between max-w-[800px] m-auto">
       <div className="flex flex-col gap-4">
         {users.map((user) => (
           <UserCard {...user} key={user.id} />

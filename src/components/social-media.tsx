@@ -1,7 +1,7 @@
-import { PossibleSocialMedia, Socialmedia } from '@/models'
-import React, { FC } from 'react'
-import { SocialMediaIcon } from './social-media-icon'
+import { Socialmedia } from '@/models'
 import { getSocialMediaUrl } from '@/utils/common'
+import { FC } from 'react'
+import { SocialMediaIcon } from './social-media-icon'
 
 export const SocialMediaTag: FC<Socialmedia> = ({ social_media, username }) => {
   return (
@@ -22,7 +22,7 @@ type SocialMediaProps = {
 
 export const SocialMedia: FC<SocialMediaProps> = ({ socialMedia }) => {
   return (
-    <div className="flex flex-wrap max-w-[600px]">
+    <div className="flex flex-wrap">
       {socialMedia.map((platform) => (
         <SocialMediaTag {...platform} key={platform.id} />
       ))}
