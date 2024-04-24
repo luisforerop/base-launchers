@@ -15,12 +15,16 @@ const AuthButton: FC<AuthButtonProps> = ({ session, user }) => {
   const supabase = createBrowserClient()
 
   const handleSignIn = async () => {
+    console.log(`${window.location.origin}/auth/callback`)
+
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         redirectTo: `${window.location.origin}/auth/callback`,
       },
     })
+
+    console.log('terminamos supabase')
   }
 
   if (session === null) {
